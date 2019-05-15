@@ -1,2 +1,0 @@
-# CatCaress
-Created with CodeSandbox
