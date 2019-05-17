@@ -18,6 +18,8 @@ import cat1 from "./images/cat1.png";
 import cat2 from "./images/cat2.png";
 import cat3 from "./images/cat3.png";
 import useInterval from "./UseInterval.js";
+import Level from './Level';
+import Listlevel from './Listlevel';
 
 // les niveaux
 const levels = [
@@ -122,62 +124,8 @@ function App() {
             </Grid>
           </Grid>
           {/*entete + levels*/}
-          <Grid container item xs={8} spacing={8}>
-            {/*entete level */}
-            <Grid container item xs={12}>
-              <Grid item xs={2}>
-                Coût.
-              </Grid>
-              <Grid item xs={4}>
-                Carresseur
-              </Grid>
-              <Grid item xs={4}>
-                Nombre
-              </Grid>
-              <Grid item xs={2}>
-                Valeur
-              </Grid>
-            </Grid>
-            {/*les levels*/}
-            {levels.map(levels =>
-              levels.id > level ? (
-                <Grid container item xs={12} key={levels.id} />
-              ) : (
-                <Grid container item xs={12} key={levels.id}>
-                  <Grid container item xs={12}>
-                    <Grid item xs={2}>
-                      {levels.cost}
-                    </Grid>
-                    <Grid item xs={4}>
-                      <Button
-                        key={levels.id}
-                        onClick={() => {
-                          if (Miaou >= levels.cost && !fin) {
-                            levels.nombre = levels.nombre + 1; // + 1 caresseur
-                            setMiaou(Miaou - levels.cost);
-                            // le carresseur coutera plus cher vive le capitalisme
-                            levels.cost = levels.cost + levels.valeur * 5;
-                            if (levels.id + 1 > level) setLevel(levels.id + 1);
-                            if (levels.id === 10) setFin(true);
-                          } //console.log("click");
-                        }}
-                        variant="contained"
-                        color="primary"
-                      >
-                        {levels.label}
-                      </Button>
-                    </Grid>
-                    <Grid item xs={4}>
-                      {levels.nombre} *
-                    </Grid>
-                    <Grid item xs={2}>
-                      {levels.valeur}
-                    </Grid>
-                  </Grid>
-                </Grid>
-              )
-            )}
-          </Grid>
+          Listlevel();
+
         </Grid>
       </div>
     </div>
